@@ -1,0 +1,32 @@
+.container {
+    background-color: mediumaquamarine;
+    padding: 20px;
+    height: 91vh;
+}
+
+.form-wrapper {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid teal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-wrapper form * {
+    margin-bottom: 5px;
+    border: 2px;
+}
+
+.error-container {
+    color: white;
+    border-color: brown;
+    padding: 10px;
+    margin: 10px;
+}
