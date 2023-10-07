@@ -6,7 +6,7 @@ import SignUp from '../../Components/SignUp';
 import styles from './home.module.css';
 
 const Home = (props) => {
-    const [state, setState] = useState(true);
+    const [state, setState] = useState(false);
     // const [data, setData] = useState();
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -33,6 +33,7 @@ const Home = (props) => {
             callback(values)
             .then(result => {
                 props.sendUser(result.data);
+                localStorage.setItem('token', result.tokens.token)
                 navigate('/tasks');
             })
             .catch(err => {

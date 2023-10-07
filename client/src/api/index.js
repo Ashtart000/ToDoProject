@@ -1,7 +1,7 @@
 import CONSTANTS from "../constants"
 
 export const registerUser = async (data) => {
-    const response = await fetch(`${CONSTANTS.API_BASE}/user/sign-up`, {
+    const response = await fetch(`${CONSTANTS.API_BASE}/users/sign-up`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ export const registerUser = async (data) => {
 }
 
 export const loginUser = async (data) => {
-    const response = await fetch(`${CONSTANTS.API_BASE}/user/sign-in`, {
+    const response = await fetch(`${CONSTANTS.API_BASE}/users/sign-in`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ export const loginUser = async (data) => {
 }
 
 export const getTasks = async (userId) => {
-    const response = await fetch(`${CONSTANTS.API_BASE}/task/${userId}`);
+    const response = await fetch(`${CONSTANTS.API_BASE}/tasks/${userId}`);
 
     if(response.status === 400) {
         const error = await response.json();
@@ -44,7 +44,7 @@ export const getTasks = async (userId) => {
 }
 
 export const createTask = async (data) => {
-    const response = await fetch(`${CONSTANTS.API_BASE}/task`, {
+    const response = await fetch(`${CONSTANTS.API_BASE}/tasks`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,4 +57,15 @@ export const createTask = async (data) => {
     }
 
     return response.json();
+}
+
+export const authUser = async (token) => {
+    const res = await fetch(`${CONSTANTS.API_BASE}/users/${token}`);
+
+    if(res.status === 403) {
+        const error = await res.json();
+        return Promise.reject(error);
+    }
+
+    return res.json();
 }

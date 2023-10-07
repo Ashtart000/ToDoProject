@@ -4,7 +4,7 @@ const taskRouter = require('./task')
 
 const router = Router();
 
-router.use('/user', userRouter);
-router.use('/task', taskRouter);
+router.use('/users', userRouter);
+router.use('/tasks', taskRouter);
 
 module.exports = router;
