@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('./User');
 const Task = require('./Task');
+const RefreshToken = require('./RefreshToken')
 const { DB } = require('../configs/db');
 
 mongoose.connect(DB)
@@ -10,5 +11,5 @@ mongoose.connect(DB)
 })
 
 module.exports = {
-    User, Task
+    User, Task, RefreshToken
 }

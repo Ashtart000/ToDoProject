@@ -5,6 +5,7 @@ const userRouter = Router();
 
 userRouter.post('/sign-up', UserController.registrationUser); // register
 userRouter.post('/sign-in', UserController.loginUser); // login
-userRouter.get('/', checkToken, UserController.checkToken);
+userRouter.get('/', checkToken, UserController.checkAuth);
+userRouter.post('/refresh', UserController.refreshSession);
 
 module.exports = userRouter;

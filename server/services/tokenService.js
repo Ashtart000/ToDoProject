@@ -4,11 +4,19 @@ const jwt = require('jsonwebtoken');
 const promisifyJwtSign = promisify(jwt.sign);
 const promisifyJwtVerify = promisify(jwt.verify);
 
-const EXPIRES_TIME = 60*60;
-const SECRET = 'some_secret_key'
+const REFRESH_EXPIRES_TIME = '24h';
+const ACCESS_EXPIRES_TIME = 60;
+const ACCESS_SECRET = 'some_secret_key';
+const REFRESH_SECRET = 'another_some_any_secret_key'
 
-module.exports.createToken = async ({userId, email}) => 
-await promisifyJwtSign({userId, email}, SECRET, {expiresIn: EXPIRES_TIME});
+module.exports.createAccessToken = async ({userId, email}) => 
+await promisifyJwtSign({userId, email}, ACCESS_SECRET, {expiresIn: ACCESS_EXPIRES_TIME});
 
-module.exports.verifyToken = async (token) => 
-await promisifyJwtVerify(token, SECRET);
+module.exports.createRefreshToken = async ({userId, email}) => 
+await promisifyJwtSign({userId, email}, REFRESH_SECRET, {expiresIn: REFRESH_EXPIRES_TIME});
+
+module.exports.verifyAccessToken = async (token) => 
+await promisifyJwtVerify(token, ACCESS_SECRET);
+
+module.exports.verifyRefreshToken = async (token) => 
+await promisifyJwtVerify(token, REFRESH_SECRET);

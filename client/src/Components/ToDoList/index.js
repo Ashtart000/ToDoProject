@@ -4,7 +4,7 @@ import TodoItem from '../ToDoItem';
 const ToDoList = (props) => {
     return (
         <ul>
-            {props.todos.map(td => <TodoItem item={td} key={td._id} />)}
+            {props.todos.map(td => <TodoItem item={td} key={td._id} delete={props.delCallback} />)}
         </ul>
     );
 }
