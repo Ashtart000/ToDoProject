@@ -1,0 +1,5 @@
+export default {
+    INCREMENT: 'COUNTER_PLUS',
+    DECREMENT: 'COUNTER_MINUS',
+    STEP: 'COUNTER_STEP'
+}
